@@ -6,6 +6,17 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
+
+    class Grades
+    {
+        public int[] grades;
+
+        public Grades(int[] g)
+        {
+            grades = g; // Very unsafe
+        }
+    }
+
     class Program
     {
         static void Main()
@@ -36,6 +47,14 @@ namespace ConsoleApplication1
             decimal[] new_prices = prices;
             new_prices[0] = 356M;
             Console.WriteLine("the price is {0}", prices[0]);
+
+            //
+            int[] grades = { 1, 2, 3 };
+            Grades grader = new Grades(grades);
+            Console.WriteLine("The insides of class {0}", grader.grades[0]);
+            // Change the initital array
+            grades[0] = 100;
+            Console.WriteLine("The insides of class {0}", grader.grades[0]);
         }
     }
 }
