@@ -1,0 +1,19 @@
+﻿<Window x:Class="WpfBinaryResourcesApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfBinaryResourcesApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+    <DockPanel LastChildFill="True">
+        <Button x:Name="btnPreviousImage" Height="40" Width="100" BorderBrush="Black"
+Margin="5" Content="Previous" Click="btnPreviousImage_Click"/>
+        <Button x:Name="btnNextImage" Height="40" Width="100" BorderBrush="Black"
+Margin="5" Content="Next" Click="btnNextImage_Click"/>
+        <!-- We will fill this Image in code. -->
+        <Border BorderThickness="2" BorderBrush="Green">
+            <Image x:Name="imageHolder" Stretch="Fill" />
+        </Border>
+    </DockPanel>
+</Window>
