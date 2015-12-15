@@ -39,6 +39,15 @@ namespace ConsoleApplication
             string wordEndsWithB = "blob";
             newWord = re.Replace(wordEndsWithB, "$&ing");
             Console.WriteLine(string.Format("{0}->{1}", word, newWord));
+
+            // Satrts with any prefix
+            word = "postnuclear";
+            string[] prefixes = { "pre" , "post"};
+            string startsWithAnyPrefix = string.Format("^({0}|{1})", prefixes[0], prefixes[1]);
+            re = new Regex(startsWithAnyPrefix);
+            newWord = re.Replace(word, "");
+            Console.WriteLine(string.Format("{0}->{1}", word, newWord));
+
         }
     }
 }
