@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Text;
 
-
-namespace ConsoleApplication1
+namespace StringBuilderMethods
 {
     class Program
     {
@@ -12,6 +11,7 @@ namespace ConsoleApplication1
             sb.Append(10);
             sb.Append("text");
             string substr = "substring";
+            sb.Replace("10", "12");
             sb.AppendFormat("And even format {0}", substr);
             Console.WriteLine(sb.ToString());
         }
