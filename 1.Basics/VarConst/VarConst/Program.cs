@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace VarConst
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
             const string title = "Some string."; // wont even compile if you try to assign
             Console.Title = title;
