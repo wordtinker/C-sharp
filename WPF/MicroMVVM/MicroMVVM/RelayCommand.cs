@@ -7,7 +7,8 @@ using System.Windows.Input;
 namespace MicroMvvm
 {
     /// <summary>
-    /// A command whose sole purpose is to relay its functionality to other objects by invoking delegates. The default return value for the CanExecute method is 'true'.
+    /// A command whose sole purpose is to relay its functionality to other
+    /// objects by invoking delegates. The default return value for the CanExecute method is 'true'.
     /// </summary>
     public class RelayCommand<T> : ICommand
     {
