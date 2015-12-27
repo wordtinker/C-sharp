@@ -35,6 +35,11 @@ namespace MicroMvvm
             OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
         }
 
+        protected void RaiseAllPropertiesChanged()
+        {
+            OnPropertyChanged(new PropertyChangedEventArgs(null));
+        }
+
         /// <summary>
         /// Warns the developer if this Object does not have a public property with
         /// the specified name. This method does not exist in a Release build.
