@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace Arrays
 {
-
     class Grades
     {
         public int[] grades;
@@ -37,7 +36,7 @@ namespace ConsoleApplication1
                 {
                     var s = String.Format("[{0},{1}]", i, j);
                     multi[i, j] = s;
-                    Console.Write(multi[i,j]);
+                    Console.Write(multi[i, j]);
                 }
                 Console.WriteLine();
             }
@@ -55,6 +54,41 @@ namespace ConsoleApplication1
             // Change the initital array
             grades[0] = 100;
             Console.WriteLine("The insides of class {0}", grader.grades[0]);
+
+
+
+            Console.WriteLine("=> Working with System.Array.");
+            // Initialize items at startup.
+            string[] gothicBands = { "Tones on Tail", "Bauhaus", "Sisters of Mercy" };
+            // Print out names in declared order.
+            Console.WriteLine("-> Here is the array:");
+            for (int i = 0; i < gothicBands.Length; i++)
+            {
+                // Print a name.
+                Console.Write(gothicBands[i] + ", ");
+            }
+            Console.WriteLine("\n");
+            // Reverse them...
+            Array.Reverse(gothicBands); // Note use of static method
+            Console.WriteLine("-> The reversed array");
+            // ... and print them.
+            for (int i = 0; i < gothicBands.Length; i++)
+            {
+                // Print a name.
+                Console.Write(gothicBands[i] + ", ");
+            }
+            Console.WriteLine("\n");
+
+            // Clear out all but the final member.
+            Console.WriteLine("-> Cleared out all but one...");
+            Array.Clear(gothicBands, 1, 2);
+            for (int i = 0; i < gothicBands.Length; i++)
+            {
+                // Print a name.
+                Console.Write(gothicBands[i] + ", ");
+            }
+            Console.WriteLine();
+
         }
     }
 }
