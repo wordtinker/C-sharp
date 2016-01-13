@@ -40,7 +40,8 @@ class Rectangle
     }
 }
 
-class Programm {
+class Programm
+{
     static void Main()
     {
         Point p = new Point();
@@ -50,6 +51,7 @@ class Programm {
 
         // Shortcut using init syntax
         Point t = new Point { X = 20, Y = 20 }; // default constructor is called;
+        // could be called with any constructor
         t.DisplayStats();
 
         // Create using custom constructor

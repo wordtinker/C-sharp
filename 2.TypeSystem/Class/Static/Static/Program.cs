@@ -36,6 +36,13 @@ namespace Static
 
         public static double GetInterestRate()
         { return currInterestRate; }
+
+        // Static property
+        public static double InterestRate
+        {
+            get { return currInterestRate; }
+            set { currInterestRate = value; }
+        }
     }
 
     // Static classes can only
