@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace Lambda
 {
     class Program
     {
@@ -36,7 +33,7 @@ namespace ConsoleApplication1
 
         static bool IsEvenNumber(int i)
         {
-            return (i % 2) == 0; 
+            return (i % 2) == 0;
         }
 
         static void AnonymousMethodSyntax()
