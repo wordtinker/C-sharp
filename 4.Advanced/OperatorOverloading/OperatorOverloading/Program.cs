@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace OperatorOverloading
 {
     class Vector
     {
@@ -34,4 +30,5 @@ namespace ConsoleApplication1
             Console.WriteLine("The sum of {0} and {1} is {2}.", v1, v2, v1 + v2);
         }
     }
+
 }
