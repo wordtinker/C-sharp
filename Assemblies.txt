@@ -1,0 +1,91 @@
+Probing private assembly. 
+  1. app directory for a named file *.dll
+  2. app directory for a named file *.exe
+  3. sudirectory with the exact same name
+  as the assembly's friendly name
+
+Configuring private assemblies for probing
+custom location.
+Add to the appName.config file:
+<configuration>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <probing privatePath="MyLibraries"/>
+    </assemblyBinding>
+  </runtime>
+</configuration>
+Do note that the <probing> element does not specify which assembly is located under a given
+subdirectory. In other words, you cannot say, “CarLibrary is located under the MyLibraries subdirectory,
+but MathLibrary is located under the OtherStuff subdirectory.” The <probing> element simply instructs
+the CLR to investigate all specified subdirectories for the requested assembly until the first match is
+encountered.
+Multiple : <probing privatePath="MyLibraries;MyLibraries\Tests"/>
+
+Building *.config file from App.config.
+Each time you compile your project, Visual Studio will automatically
+copy the data in App.config to a new file in the \bin\Debug directory using the proper naming
+convention (such as YouNameIt.exe.config).
+
+the Global Assembly Cache
+(GAC).
+only .dll
+.NET < 4.0 C:\Windows\assembly
+.NET >= 4.0 C:\Windows\Microsoft.NET\assembly\GAC_MSIL
+Under this new folder, you will find a set of subdirectories, each of which is named identically to the
+friendly name of a particular code library (for example, \System.Windows.Forms, \System.Core, and so
+on). Beneath a given friendly name folder, you’ll find yet another subdirectory that always takes the
+following naming convention:
+v4.0_major.minor.build.revision_publicKeyTokenValue
+
+Strong name:
+  The friendly name of the assembly
+ The version number of the assembly (assigned using the [AssemblyVersion]
+attribute)
+ The public key value (assigned using the [AssemblyKeyFile] attribute)
+ An optional culture identity value for localization purposes (assigned using the
+[AssemblyCulture] attribute)
+ An embedded digital signature, created using a hash of the assembly’s contents
+and the private key value
+
+sn.exe -> public key(goes to manifest) + private key
+
+public key + assembly -> Assembly hash code
+assembly hash code + private key -> digital signature
+
+Example
+1. sn –k MyTestKeyPair.snk
+1. in AssemblyInfo.cs:
+  [assembly: AssemblyKeyFile(@"C:\MyTestKeyPair\MyTestKeyPair.snk")]
+  [assembly: AssemblyVersion("1.0.0.0")]
+  [AssemblyCulture]
+
+Installing to GAC.
+1. using gacutil if .NET presented
+2. http://weblogs.asp.net/adweigert/powershell-install-gac-gacutil-for-powershell
+
+Consuming from GAC
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
