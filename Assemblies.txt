@@ -62,30 +62,3 @@ Example
 Installing to GAC.
 1. using gacutil if .NET presented
 2. http://weblogs.asp.net/adweigert/powershell-install-gac-gacutil-for-powershell
-
-Consuming from GAC
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
