@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Threading;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace ThreadPools
 {
     public class Printer
     {

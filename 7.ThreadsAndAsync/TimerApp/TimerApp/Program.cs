@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace ConsoleApplication1
+namespace TimerApp
 {
     class Program
     {
