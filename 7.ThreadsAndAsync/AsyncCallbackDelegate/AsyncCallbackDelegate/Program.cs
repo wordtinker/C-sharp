@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Threading;
 using System.Runtime.Remoting.Messaging;
+using System.Threading;
 
 namespace AsyncCallbackDelegate
 {
     public delegate int BinaryOp(int x, int y);
+
     class Program
     {
         private static bool isDone = false; // not safe!!!!
+
         static void Main(string[] args)
         {
             Console.WriteLine("***** AsyncCallbackDelegate Example *****");
@@ -15,7 +17,7 @@ namespace AsyncCallbackDelegate
             Thread.CurrentThread.ManagedThreadId);
             BinaryOp b = new BinaryOp(Add);
             IAsyncResult iftAR = b.BeginInvoke(10, 10,
-                new AsyncCallback(AddComplete), 
+                new AsyncCallback(AddComplete),
                 "Thanks for this numbers.");
             // Assume other work is performed here...
             while (!isDone)
@@ -25,6 +27,7 @@ namespace AsyncCallbackDelegate
             }
             Console.ReadLine();
         }
+
         static int Add(int x, int y)
         {
             Console.WriteLine("Add() invoked on thread {0}.",
@@ -32,6 +35,7 @@ namespace AsyncCallbackDelegate
             Thread.Sleep(5000);
             return x + y;
         }
+
         static void AddComplete(IAsyncResult itfAR)
         {
             Console.WriteLine("AddComplete() invoked on thread {0}.",

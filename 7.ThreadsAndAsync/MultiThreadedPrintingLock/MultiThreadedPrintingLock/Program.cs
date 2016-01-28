@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace ConsoleApplication1
+namespace MultiThreadedPrintingLock
 {
     public class Printer
     {
@@ -22,7 +22,7 @@ namespace ConsoleApplication1
                     Console.Write("{0}, ", i);
                     Thread.Sleep(500);
                 }
-                Console.WriteLine(); 
+                Console.WriteLine();
             }
         }
     }

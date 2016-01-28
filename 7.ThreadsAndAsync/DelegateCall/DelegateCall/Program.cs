@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Threading;
 
-namespace SyncDelegateReview
+namespace DelegateCall
 {
     public delegate int BinaryOp(int x, int y);
+
     class Program
     {
         static void SyncCall()
         {
-            Console.WriteLine("***** Synch Delegate Review *****");
+            Console.WriteLine("***** Sync Delegate Review *****");
             // Print out the ID of the executing thread.
             Console.WriteLine("Main() invoked on thread {0}.",
             Thread.CurrentThread.ManagedThreadId);
@@ -24,11 +25,12 @@ namespace SyncDelegateReview
 
         static void AsyncCall()
         {
-            Console.WriteLine("***** Asynch Delegate Review *****");
+            Console.WriteLine("***** Async Delegate Review *****");
             // Print out the ID of the executing thread.
             Console.WriteLine("Main() invoked on thread {0}.",
             Thread.CurrentThread.ManagedThreadId);
             // Invoke Add() in a asynchronous manner.
+            // but it is still synchronous call.
             BinaryOp b = new BinaryOp(Add);
 
             IAsyncResult res = b.BeginInvoke(10, 10, null, null);
@@ -42,7 +44,7 @@ namespace SyncDelegateReview
 
         static void WaitCall()
         {
-            Console.WriteLine("***** Asynch Delegate Review *****");
+            Console.WriteLine("***** Async Delegate Review *****");
             // Print out the ID of the executing thread.
             Console.WriteLine("Main() invoked on thread {0}.",
             Thread.CurrentThread.ManagedThreadId);

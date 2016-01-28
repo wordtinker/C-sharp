@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Threading;
-using System.Windows.Forms;
 
-namespace ConsoleApplication1
+namespace SimpleMultiThreadApp
 {
     public class Printer
     {
@@ -54,7 +53,7 @@ namespace ConsoleApplication1
                     goto case "1";
             }
             // Do some additional work.
-            MessageBox.Show("I'm busy!", "Work on main thread...");
+            System.Windows.Forms.MessageBox.Show("I'm busy!", "Work on main thread...");
             Console.ReadLine();
         }
     }
