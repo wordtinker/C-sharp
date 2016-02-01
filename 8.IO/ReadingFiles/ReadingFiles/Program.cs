@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace ConsoleApplication1
+namespace ReadingFiles
 {
     class Program
     {
@@ -21,7 +21,7 @@ namespace ConsoleApplication1
                 string s = Console.ReadLine();
                 while (s != "Exit")
                 {
-                    writer.Write(s+"\n");
+                    writer.Write(s + "\n");
                     s = Console.ReadLine();
                 }
             }
@@ -29,16 +29,12 @@ namespace ConsoleApplication1
             using (StreamReader reader = File.OpenText(@"c:\data\SampleFile.txt"))
             {
                 string line;
-                while((line = reader.ReadLine())!= null)
+                while ((line = reader.ReadLine()) != null)
                 {
                     Console.WriteLine(line);
                 }
             }
             Console.WriteLine();
-
-
-
-
         }
     }
 }

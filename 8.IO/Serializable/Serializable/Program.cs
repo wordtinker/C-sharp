@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace ConsoleApplication1
+namespace Serializable
 {
     [Serializable]
     class UserPrefs
@@ -21,19 +21,19 @@ namespace ConsoleApplication1
             UserPrefs userData = new UserPrefs { WindowsColor = "Yellow", FontSize = 14 };
 
             BinaryFormatter bf = new BinaryFormatter();
-            
-            using(Stream fstream = new FileStream("user.dat", FileMode.Create, FileAccess.Write, FileShare.None))
+
+            using (Stream fstream = new FileStream("user.dat", FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 bf.Serialize(fstream, userData);
             }
 
             UserPrefs newPrefs = new UserPrefs();
-            using(Stream rsteam = File.OpenRead("user.dat"))
+            using (Stream rsteam = File.OpenRead("user.dat"))
             {
                 newPrefs = (UserPrefs)bf.Deserialize(rsteam);
             }
 
-            Console.WriteLine("{0} {1}",newPrefs.WindowsColor, newPrefs.FontSize);
+            Console.WriteLine("{0} {1}", newPrefs.WindowsColor, newPrefs.FontSize);
         }
     }
 }

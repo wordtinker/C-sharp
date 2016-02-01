@@ -1,8 +1,7 @@
 ﻿using System;
 using System.IO;
 
-
-namespace ConsoleApplication1
+namespace FilesAndDirs
 {
     class Program
     {

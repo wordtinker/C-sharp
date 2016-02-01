@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace ConsoleApplication1
+namespace Watching
 {
     class Program
     {
@@ -30,7 +30,7 @@ namespace ConsoleApplication1
             watcher.EnableRaisingEvents = true;
 
             ReadAndWrite();
-            
+
             // Wait for the user to quit the program.
             Console.WriteLine(@"Press 'q' to quit app.");
             while (Console.Read() != 'q')
