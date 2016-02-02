@@ -166,5 +166,59 @@ namespace AutoLotConnectedLayer
             }
             return carPetName;
         }
+		
+		// A new member of the InventoryDAL class.
+		public void ProcessCreditRisk(bool throwEx, int custID)
+		{
+			// First, look up current name based on customer ID.
+			string fName = string.Empty;
+			string lName = string.Empty;
+			SqlCommand cmdSelect = new SqlCommand(	
+				string.Format("Select * from Customers where CustID = {0}", custID), sqlCn);
+			
+			using (SqlDataReader dr = cmdSelect.ExecuteReader())
+			{
+				if(dr.HasRows)
+				{
+					dr.Read();
+					fName = (string)dr["FirstName"];
+					lName = (string)dr["LastName"];
+				}
+				else
+					return;
+			}
+			// Create command objects that represent each step of the operation.
+			SqlCommand cmdRemove = new SqlCommand(
+				string.Format("Delete from Customers where CustID = {0}", custID), sqlCn);
+			SqlCommand cmdInsert = new SqlCommand(string.Format("Insert Into CreditRisks" +
+				"(CustID, FirstName, LastName) Values" +
+				"({0}, '{1}', '{2}')", custID, fName, lName), sqlCn);
+			 
+			 // You will get this from the connection object.
+			SqlTransaction tx = null;
+			try
+			{
+				tx = sqlCn.BeginTransaction();
+				// Enlist the commands into this transaction.
+				cmdInsert.Transaction = tx;
+				cmdRemove.Transaction = tx;
+				// Execute the commands.
+				cmdInsert.ExecuteNonQuery();
+				cmdRemove.ExecuteNonQuery();
+				// Simulate error.
+				if (throwEx)
+				{
+					throw new Exception("Sorry! Database error! Tx failed...");
+				}
+				// Commit it!
+				tx.Commit();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				// Any error will roll back transaction.
+				tx.Rollback();
+			}
+		}
     }
 }
