@@ -10,6 +10,9 @@ namespace MVVMQuickExample
     {
         // Notice that now we don't use control-specific events here.
         // Use them as ModelView properties
+        // 1. View knows View Models
+        // 2. View model knows Models
+        // 3. Model knows nothing about V and VM.
 
         public MainWindow()
         {
