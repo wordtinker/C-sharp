@@ -36,6 +36,12 @@ namespace StringMethods
                     very
                         long string";
             Console.WriteLine(myLongString);
+
+            // string interpolation
+            int x = 4;
+            // old way
+            Console.WriteLine("A square has {0} sides.", x);
+            Console.WriteLine($"A square has {x} sides.");
         }
     }
 }
