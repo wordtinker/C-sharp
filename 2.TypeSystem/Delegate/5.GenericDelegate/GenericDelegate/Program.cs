@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GenericDelegate
 {
@@ -15,14 +11,10 @@ namespace GenericDelegate
         static void Main(string[] args)
         {
 
-            MyGenericDelegate<string> strTarget =
-                // new MyGenericDelegate<string>(StringTarget);
-                StringTarget;
+            MyGenericDelegate<string> strTarget = StringTarget;
             strTarget("Some string data.");
 
-            MyGenericDelegate<int> intTarget =
-                // new MyGenericDelegate<int>(IntTarget);
-                IntTarget;
+            MyGenericDelegate<int> intTarget = IntTarget;
             intTarget(9);
             Console.ReadLine();
         }
