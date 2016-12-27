@@ -34,24 +34,31 @@ namespace CarDelegate
             // If this car is "dead," send dead message.
             if (carIsDead)
             {
-                if (listOfHandlers != null)
-                    listOfHandlers("Sorry, this car is dead...");
+                // Pre 6.0 Way
+                // In multithreaded scenarios, you need to assign
+                // the delegate to a temporary variable before testing and invoking
+                // it to avoid a thread - safety error:
+                // var temp = listOfHandlers;
+                // if (temp != null)
+                // {
+                //     temp("Sorry, this car is dead...");
+                // }
+                listOfHandlers?.Invoke("Sorry, this car is dead...");
             }
             else
             {
                 CurrentSpeed += delta;
                 // Is this car "almost dead"?
-                if (10 == (MaxSpeed - CurrentSpeed)
-                && listOfHandlers != null)
+                if (10 == MaxSpeed - CurrentSpeed)
                 {
-                    listOfHandlers("Careful buddy! Gonna blow!");
+                    listOfHandlers?.Invoke("Careful buddy! Gonna blow!");
                 }
             }
 
             if (CurrentSpeed >= MaxSpeed)
                 carIsDead = true;
             else
-                Console.WriteLine("CurrentSpeed = {0}", CurrentSpeed);
+                listOfHandlers?.Invoke($"CurrentSpeed = {CurrentSpeed}");
         }
     }
 
@@ -64,9 +71,7 @@ namespace CarDelegate
             Car c1 = new Car("SlugBug", 100, 10);
             // Now, tell the car which method to call
             // when it wants to send us messages.
-            // c1.RegisterWithCarEngine(new Car.CarEngineHandler(OnCarEngineEvent));
-            c1.RegisterWithCarEngine(OnCarEngineEvent); // shortcut for pervious line
-            // c1.RegisterWithCarEngine(new Car.CarEngineHandler(OnCarEngineEvent2));
+            c1.RegisterWithCarEngine(OnCarEngineEvent);
             c1.RegisterWithCarEngine(OnCarEngineEvent2);
             // Speed up (this will trigger the events).
             Console.WriteLine("***** Speeding up *****");
