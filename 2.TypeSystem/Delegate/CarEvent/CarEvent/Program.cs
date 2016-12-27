@@ -13,14 +13,20 @@ namespace CarEvent
 
     public class Car
     {
-        // This delegate works in conjunction with the
-        // Car's events.
-        //public delegate void CarEngineHandler(object sender, CarEventArgs e);
+        /// <summary>
+        /// An event is a construct
+        /// that exposes just the subset of delegate features required for the
+        /// broadcaster/subscriber model. The main purpose of events is to prevent
+        /// subscribers from interfering with one another.
+        /// Events prevent:
+        /// • Replacing other subscribers by reassigning instance
+        /// (instead of using the += operator).
+        /// • Clearing all subscribers(by setting instance to null).
+        /// • Broadcasting to other subscribers by invoking the delegate.
+        /// </summary>
 
         // This car can send these events.
-        //public event CarEngineHandler Exploded;
-        //public event CarEngineHandler AboutToBlow;
-        public event EventHandler<CarEventArgs> Exploded; // dont need to declare delegate at all
+        public event EventHandler<CarEventArgs> Exploded;
         public event EventHandler<CarEventArgs> AboutToBlow;
 
         // Internal state data.
@@ -43,17 +49,15 @@ namespace CarEvent
             // If the car is dead, fire Exploded event.
             if (carIsDead)
             {
-                if (Exploded != null)
-                    Exploded(this, new CarEventArgs("Sorry, this car is dead..."));
+                Exploded?.Invoke(this, new CarEventArgs("Sorry, this car is dead..."));
             }
             else
             {
                 CurrentSpeed += delta;
                 // Almost dead?
-                if (10 == MaxSpeed - CurrentSpeed
-                && AboutToBlow != null)
+                if (10 == MaxSpeed - CurrentSpeed)
                 {
-                    AboutToBlow(this, new CarEventArgs("Careful buddy! Gonna blow!"));
+                    AboutToBlow?.Invoke(this, new CarEventArgs("Careful buddy! Gonna blow!"));
                 }
                 // Still OK!
                 if (CurrentSpeed >= MaxSpeed)
@@ -73,12 +77,9 @@ namespace CarEvent
             Console.WriteLine("***** Fun with Events *****\n");
             Car c1 = new Car("SlugBug", 100, 10);
             // Register event handlers.
-            //c1.AboutToBlow += new Car.CarEngineHandler(CarIsAlmostDoomed);
             c1.AboutToBlow += CarIsAlmostDoomed;
-            //c1.AboutToBlow += new Car.CarEngineHandler(CarAboutToBlow);
             c1.AboutToBlow += CarAboutToBlow;
 
-            //Car.CarEngineHandler d = new Car.CarEngineHandler(CarExploded);
             EventHandler<CarEventArgs> d = CarExploded;
             c1.Exploded += d;
 
