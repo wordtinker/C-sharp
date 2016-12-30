@@ -5,6 +5,7 @@ namespace ExtensionMethods
 {
     static class MyExtensions
     {
+
         // This method allows any object to display the assembly
         // it is defined in.
         public static void DisplayDefiningAssembly(this object obj)
@@ -26,6 +27,14 @@ namespace ExtensionMethods
             // Finally, return the modified string back as an int.
             return int.Parse(newDigits);
         }
+        // pre-extensions era
+        public static int Reverse ( int i)
+        {
+            char[] digits = i.ToString().ToCharArray();
+            Array.Reverse(digits);
+            string newDigits = new string(digits);
+            return int.Parse(newDigits);
+        } 
     }
 
     class Program
@@ -44,7 +53,11 @@ namespace ExtensionMethods
             sp.DisplayDefiningAssembly();
             // Use new integer functionality.
             Console.WriteLine("Value of myInt: {0}", myInt);
+            // Pre-extensions era
+            Console.WriteLine("Reversed digits of myInt: {0}", MyExtensions.Reverse(myInt));
+            // Calling extension method
             Console.WriteLine("Reversed digits of myInt: {0}", myInt.ReverseDigits());
+
             Console.ReadLine();
         }
     }
