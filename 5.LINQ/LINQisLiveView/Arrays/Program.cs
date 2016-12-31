@@ -27,8 +27,8 @@ namespace Arrays
             int[] numbers = { 10, 20, 30, 40, 1, 2, 3, 8 };
             // Print only items less than 10.
             var subset = from i in numbers
-                                      where i < 10
-                                      select i;
+                         where i < 10
+                         select i;
             foreach (int i in subset)
                 Console.WriteLine("Item: {0}", i);
             Console.WriteLine();

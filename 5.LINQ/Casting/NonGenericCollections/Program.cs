@@ -30,7 +30,18 @@ namespace NonGenericCollections
             // Filters out anything except Car.
             var myCarsEnum = myCars.OfType<Car>();
             // Create a query expression targeting the compatible type.
-            var fastCars = from c in myCarsEnum where c.Speed > 55 select c;
+            var fastCars = from c in myCarsEnum
+                           where c.Speed > 55
+                           select c;
+            foreach (var car in fastCars)
+            {
+                Console.WriteLine("{0} is going too fast!", car.PetName);
+            }
+            // Can cast explicitly with special syntax
+            // but it will throw Exception if cast fails
+            var anotherFastCars = from Car c in myCars
+                                  where c.Speed > 55
+                                  select c;
             foreach (var car in fastCars)
             {
                 Console.WriteLine("{0} is going too fast!", car.PetName);
