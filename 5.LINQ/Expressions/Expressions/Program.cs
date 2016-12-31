@@ -92,8 +92,8 @@ namespace Expressions
             }
             Console.WriteLine();
 
-            List<string> myCars = new List<String> { "Yugo", "Aztec", "BMW" };
-            List<string> yourCars = new List<String> { "BMW", "Saab", "Aztec" };
+            List<string> myCars = new List<string> { "Yugo", "Aztec", "BMW" };
+            List<string> yourCars = new List<string> { "BMW", "Saab", "Aztec" };
             var carDiff = (from c in myCars select c)
                 .Except(from c2 in yourCars select c2);
             // myCars.Except(yourCars) will do the job too
