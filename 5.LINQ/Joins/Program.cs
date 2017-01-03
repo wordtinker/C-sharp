@@ -38,6 +38,8 @@ namespace Joins
                 new Ride{ CarName = "Henry", Date = new DateTime(2016, 11, 5), Length = 2000},
                 new Ride{ CarName = "Daisy", Date = new DateTime(2016, 12, 10), Length = 10000},
                 new Ride{ CarName = "Mary", Date = new DateTime(2016, 12, 10), Length = 3000},
+                new Ride{ CarName = "Daisy", Date = new DateTime(2016, 10, 10), Length = 10000},
+                new Ride{ CarName = "Daisy", Date = new DateTime(2016, 9, 10), Length = 10000},
             };
 
             // find the rides for every car
@@ -77,6 +79,31 @@ namespace Joins
             {
                 Console.WriteLine("Left={0}; Right={1}",
                 pair.Left, pair.Right);
+            }
+            Console.WriteLine();
+
+            // Grouping
+            var groupQuery = from ride in rides
+                             group ride by ride.CarName;
+            foreach (var entry in groupQuery)
+            {
+                Console.WriteLine(entry.Key);
+                foreach (var ride in entry)
+                {
+                    Console.WriteLine(" ({0}) {1}", ride.Date, ride.Length);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            // Continuing a grouping with another projection
+            var cgroupQuery = from ride in rides
+                              group ride by ride.CarName into grouped
+                              select new { Car = grouped.Key, Count = grouped.Count() } into result
+                              orderby result.Count descending
+                              select result;
+            foreach (var entry in cgroupQuery)
+            {
+                Console.WriteLine("{0} {1}", entry.Car, entry.Count);
             }
         }
     }
