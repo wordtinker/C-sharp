@@ -24,7 +24,7 @@ namespace TypeViewer
                     paramInfo += string.Format("{0} {1} ", pi.ParameterType, pi.Name);
                 }
                 paramInfo += " )";
-                // Now display the basic method sig.
+                // Now display the basic method signature.
                 Console.WriteLine("-> {0} {1} {2}", retVal, m.Name, paramInfo);
             }
             Console.WriteLine();
@@ -93,7 +93,7 @@ namespace TypeViewer
                 {
                     Type t = Type.GetType(typeName);
                     Console.WriteLine("");
-                    //ListVariousStats(t);
+                    ListVariousStats(t);
                     ListFields(t);
                     ListProps(t);
                     ListMethods(t);
