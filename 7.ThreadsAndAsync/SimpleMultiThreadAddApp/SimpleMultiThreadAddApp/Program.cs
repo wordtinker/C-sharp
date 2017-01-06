@@ -15,6 +15,7 @@ namespace SimpleMultiThreadAddApp
 
     class Program
     {
+        // false signals that we have not been yet notified
         private static AutoResetEvent waitHandle = new AutoResetEvent(false);
 
         static void Add(object data)
@@ -22,10 +23,10 @@ namespace SimpleMultiThreadAddApp
             if (data is AddParams)
             {
                 Console.WriteLine("ID of thread in Add(): {0}",
-                Thread.CurrentThread.ManagedThreadId);
+                                  Thread.CurrentThread.ManagedThreadId);
                 AddParams ap = (AddParams)data;
                 Console.WriteLine("{0} + {1} is {2}",
-                ap.a, ap.b, ap.a + ap.b);
+                                  ap.a, ap.b, ap.a + ap.b);
             }
             // Tell other thread we are done.
             waitHandle.Set();
@@ -42,6 +43,7 @@ namespace SimpleMultiThreadAddApp
             t.Start(ap); // <- pass param
 
             // Force a wait to let other thread finish.
+            // That's not async!
             waitHandle.WaitOne();
             Console.WriteLine("Other thread is done.");
             Console.ReadLine();

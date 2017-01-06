@@ -9,7 +9,7 @@ namespace SimpleMultiThreadApp
         {
             // Display Thread info.
             Console.WriteLine("-> {0} is executing PrintNumbers()",
-            Thread.CurrentThread.Name);
+                Thread.CurrentThread.Name);
             // Print out numbers.
             Console.Write("Your numbers: ");
             for (int i = 0; i < 10; i++)
@@ -33,15 +33,16 @@ namespace SimpleMultiThreadApp
 
             // Display Thread info.
             Console.WriteLine("-> {0} is executing Main()",
-            Thread.CurrentThread.Name);
+                              Thread.CurrentThread.Name);
             // Make worker class.
             Printer p = new Printer();
             switch (threadCount)
             {
                 case "2":
                     // Now make the thread.
+                    // ThreadStart is used only for void returning methods
                     Thread backgroundThread =
-                    new Thread(new ThreadStart(p.PrintNumbers));
+                        new Thread(new ThreadStart(p.PrintNumbers));
                     backgroundThread.Name = "Secondary";
                     backgroundThread.Start();
                     break;
