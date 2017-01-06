@@ -31,7 +31,7 @@ namespace AsyncCallbackDelegate
         static int Add(int x, int y)
         {
             Console.WriteLine("Add() invoked on thread {0}.",
-            Thread.CurrentThread.ManagedThreadId);
+                              Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(5000);
             return x + y;
         }
@@ -39,7 +39,7 @@ namespace AsyncCallbackDelegate
         static void AddComplete(IAsyncResult itfAR)
         {
             Console.WriteLine("AddComplete() invoked on thread {0}.",
-            Thread.CurrentThread.ManagedThreadId);
+                              Thread.CurrentThread.ManagedThreadId);
             Console.WriteLine("Your addition is complete");
 
             AsyncResult ar = (AsyncResult)itfAR;

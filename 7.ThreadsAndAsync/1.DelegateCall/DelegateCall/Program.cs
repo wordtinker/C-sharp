@@ -30,7 +30,7 @@ namespace DelegateCall
             Console.WriteLine("Main() invoked on thread {0}.",
             Thread.CurrentThread.ManagedThreadId);
             // Invoke Add() in a asynchronous manner.
-            // but it is still synchronous call.
+            // but it is still synchronous call, we are waiting till endInvoke resolves.
             BinaryOp b = new BinaryOp(Add);
 
             IAsyncResult res = b.BeginInvoke(10, 10, null, null);
