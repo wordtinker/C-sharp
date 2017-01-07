@@ -13,6 +13,8 @@ namespace FunWithCSharpAsync
 {
     public partial class MainForm : Form
     {
+        private CancellationTokenSource cts;
+
         public MainForm()
         {
             InitializeComponent();
@@ -60,6 +62,30 @@ namespace FunWithCSharpAsync
 
             await Task.Run(() => { Thread.Sleep(2000); });
             MessageBox.Show("Done with third task!");
+        }
+
+        private async void btnRun_Click(object sender, EventArgs e)
+        {
+            cts = new CancellationTokenSource();
+            Run_btn.Enabled = false;
+            try
+            {
+                await Task.Delay(20000, cts.Token);
+                textBox1.Text += "Done!\r\n";
+            }
+            catch(OperationCanceledException ex)
+            {
+                textBox1.Text += "Cancelled!\r\n";
+            }
+            finally
+            {
+                Run_btn.Enabled = true;
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            cts?.Cancel();
         }
     }
 }

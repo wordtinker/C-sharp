@@ -34,6 +34,8 @@
             this.btnVoidMethodCall = new System.Windows.Forms.Button();
             this.btnMutliAwaits = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Run_btn = new System.Windows.Forms.Button();
+            this.Cancel_Btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCallMethod
@@ -91,11 +93,33 @@
             this.textBox1.Size = new System.Drawing.Size(253, 114);
             this.textBox1.TabIndex = 5;
             // 
+            // Run_btn
+            // 
+            this.Run_btn.Location = new System.Drawing.Point(13, 200);
+            this.Run_btn.Name = "Run_btn";
+            this.Run_btn.Size = new System.Drawing.Size(115, 32);
+            this.Run_btn.TabIndex = 6;
+            this.Run_btn.Text = "Run_With_Cancel";
+            this.Run_btn.UseVisualStyleBackColor = true;
+            this.Run_btn.Click += new System.EventHandler(this.btnRun_Click);
+            // 
+            // Cancel_Btn
+            // 
+            this.Cancel_Btn.Location = new System.Drawing.Point(13, 265);
+            this.Cancel_Btn.Name = "Cancel_Btn";
+            this.Cancel_Btn.Size = new System.Drawing.Size(115, 32);
+            this.Cancel_Btn.TabIndex = 7;
+            this.Cancel_Btn.Text = "Cancel";
+            this.Cancel_Btn.UseVisualStyleBackColor = true;
+            this.Cancel_Btn.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 374);
+            this.Controls.Add(this.Cancel_Btn);
+            this.Controls.Add(this.Run_btn);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnMutliAwaits);
             this.Controls.Add(this.btnVoidMethodCall);
@@ -118,6 +142,8 @@
         private System.Windows.Forms.Button btnVoidMethodCall;
         private System.Windows.Forms.Button btnMutliAwaits;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button Run_btn;
+        private System.Windows.Forms.Button Cancel_Btn;
     }
 }
 
