@@ -87,5 +87,30 @@ namespace FunWithCSharpAsync
         {
             cts?.Cancel();
         }
+
+        private async void btnProgress_Click(object sender, EventArgs e)
+        {
+            Btn_Progress.Enabled = false;
+            try
+            {
+                await Task.Run(
+                    () => DoProcessing(
+                        new Progress<int>(p => textBox1.Text += $"{p}\r\n")
+                        ));
+            }
+            finally
+            {
+                Btn_Progress.Enabled = true;
+            }
+        }
+
+        private void DoProcessing(IProgress<int> progress)
+        {
+            for (int i = 0; i != 5; ++i)
+            {
+                Thread.Sleep(100); // CPU-bound work
+                progress?.Report(i);
+            }
+        }
     }
 }

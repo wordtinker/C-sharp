@@ -36,6 +36,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.Run_btn = new System.Windows.Forms.Button();
             this.Cancel_Btn = new System.Windows.Forms.Button();
+            this.Btn_Progress = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCallMethod
@@ -113,11 +114,22 @@
             this.Cancel_Btn.UseVisualStyleBackColor = true;
             this.Cancel_Btn.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // Btn_Progress
+            // 
+            this.Btn_Progress.Location = new System.Drawing.Point(13, 330);
+            this.Btn_Progress.Name = "Btn_Progress";
+            this.Btn_Progress.Size = new System.Drawing.Size(115, 32);
+            this.Btn_Progress.TabIndex = 8;
+            this.Btn_Progress.Text = "Progress";
+            this.Btn_Progress.UseVisualStyleBackColor = true;
+            this.Btn_Progress.Click += new System.EventHandler(this.btnProgress_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 374);
+            this.Controls.Add(this.Btn_Progress);
             this.Controls.Add(this.Cancel_Btn);
             this.Controls.Add(this.Run_btn);
             this.Controls.Add(this.textBox1);
@@ -144,6 +156,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button Run_btn;
         private System.Windows.Forms.Button Cancel_Btn;
+        private System.Windows.Forms.Button Btn_Progress;
     }
 }
 
