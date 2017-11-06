@@ -80,31 +80,6 @@ namespace Joins
                 Console.WriteLine("Left={0}; Right={1}",
                 pair.Left, pair.Right);
             }
-            Console.WriteLine();
-
-            // Grouping
-            var groupQuery = from ride in rides
-                             group ride by ride.CarName;
-            foreach (var entry in groupQuery)
-            {
-                Console.WriteLine(entry.Key);
-                foreach (var ride in entry)
-                {
-                    Console.WriteLine(" ({0}) {1}", ride.Date, ride.Length);
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine();
-            // Continuing a grouping with another projection
-            var cgroupQuery = from ride in rides
-                              group ride by ride.CarName into grouped
-                              select new { Car = grouped.Key, Count = grouped.Count() } into result
-                              orderby result.Count descending
-                              select result;
-            foreach (var entry in cgroupQuery)
-            {
-                Console.WriteLine("{0} {1}", entry.Car, entry.Count);
-            }
         }
     }
 }
