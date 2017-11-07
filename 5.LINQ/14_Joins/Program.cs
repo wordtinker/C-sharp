@@ -64,22 +64,6 @@ namespace Joins
                 Console.WriteLine("{0:d}: {1}", grouped.Car, grouped.Count);
             }
             Console.WriteLine();
-
-            // Cartesian product
-            // could be useful to read logs for example
-            //var query = from file in Directory.GetFiles(logDirectory, "*.log")
-            //            from line in ReadLines(file)
-            //            let entry = new LogEntry(line)
-            //            where entry.Type == EntryType.Error
-            //            select entry;
-            var cQuery = from left in myCars
-                         from right in rides
-                         select new { Left = left.PetName, Right = right.Date };
-            foreach (var pair in cQuery)
-            {
-                Console.WriteLine("Left={0}; Right={1}",
-                pair.Left, pair.Right);
-            }
         }
     }
 }
