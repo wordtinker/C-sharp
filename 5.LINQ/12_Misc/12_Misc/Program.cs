@@ -29,6 +29,13 @@ namespace _12_Misc
 
             Console.WriteLine("The sequences match: {0}", match);
 
+            // Zip two sequnces together
+            var zip = numbersA.Zip(wordsA, (n, w) => $"{n} = {w}");
+            foreach (var n in zip)
+            {
+                Console.WriteLine(n);
+            }
+
         }
     }
 }

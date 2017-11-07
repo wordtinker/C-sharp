@@ -110,7 +110,21 @@ namespace _2_Select
                 Console.WriteLine("{0} is less than {1}", pair.a, pair.b);
             }
         }
-
+        static void SelectMany2()
+        {
+            // select many projects n-size sequence into m-size sequence
+            string[] fullNames = { "Anne Williams", "John Fred Smith", "Sue Green" };
+            var splitted = fullNames.SelectMany(name => name.Split());
+            Console.WriteLine("Split every name into parts");
+            foreach (var item in splitted)
+            {
+                Console.WriteLine(item);
+            }
+            // the same
+            //from fullname in fullNames
+            //from name in fullname.Split()
+            //select name;
+        }
         static void Main(string[] args)
         {
             // Can project elements into modified itself
@@ -125,6 +139,8 @@ namespace _2_Select
             SelectIndexed();
             // Can project elemenets of two seqs as nested loop
             SelectMany();
+            // Can project n-size sequence into m-size sequence
+            SelectMany2();
         }
     }
 }
