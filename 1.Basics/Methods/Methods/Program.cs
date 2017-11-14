@@ -13,9 +13,15 @@ namespace Methods
             Console.WriteLine("After call: X: {0}, Y: {1}", x, y);
             Console.ReadLine();
 
+            // Pre C#7.0
             int ans;
             Add(90, 90, out ans);
             Console.WriteLine("90 + 90 = {0}", ans);
+            Console.ReadLine();
+
+            // Post C#7.0
+            Add(90, 90, out int answer);
+            Console.WriteLine("90 + 90 = {0}", answer);
             Console.ReadLine();
 
             string str1 = "Flip";
