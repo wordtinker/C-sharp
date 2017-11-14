@@ -109,6 +109,12 @@ namespace Polymorphism
 
     class Program
     {
+        public static void PrintStars(object o)
+        {
+            if (o is null) return;     // constant pattern "null"
+            if (!(o is int i)) return; // type pattern "int i"
+            Console.WriteLine(new string('*', i));
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("***** The Employee Class Hierarchy *****\n");
@@ -137,8 +143,16 @@ namespace Polymorphism
             {
                 Console.WriteLine("He is manager.");
             }
-
-
+            // C# 7.0 introduces the notion of patterns, which,
+            // abstractly speaking, are syntactic elements that can test that a value has
+            // a certain "shape", and extract information from the value when it does
+            PrintStars(3);
+            object o = "10";
+            if (o is int i || (o is string s && int.TryParse(s, out i)))
+            {
+                Console.WriteLine("i is: {0}", i);
+                /* use i */
+            }
         }
     }
 }
