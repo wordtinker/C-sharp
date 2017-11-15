@@ -95,5 +95,20 @@ namespace Methods
             Console.WriteLine("Error: {0}", message);
             Console.WriteLine("Owner of Error: {0}", owner);
         }
+
+        // Post C#7.0
+        public int Fibonacci(int x)
+        {
+            if (x < 0) throw new ArgumentException("Less negativity please!", nameof(x));
+            return Fib(x).current;
+
+            // local function
+            (int current, int previous) Fib(int i)
+            {
+                if (i == 0) return (1, 0);
+                var (p, pp) = Fib(i - 1);
+                return (p + pp, p);
+            }
+        }
     }
 }
