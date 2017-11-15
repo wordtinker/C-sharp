@@ -35,6 +35,13 @@ namespace Encapsulation
                     empName = value;
             }
         }
+        // Properties with expression body, 7.0
+        // same is valid for ctor, finalizer, and methods
+        public string NewName
+        {
+            get => empName;
+            set => empName = value;
+        }
 
         // Automatic property
         public int EmpID { get; set; }
