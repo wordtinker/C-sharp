@@ -65,7 +65,8 @@ namespace _07.OptionType
     class Subscriber
     {
         public Option<string> Name { get; set; }
-        public string Email { get; set; }    }
+        public string Email { get; set; }
+    }
 
     class Program
     {
@@ -81,9 +82,13 @@ namespace _07.OptionType
             // we say that “the Option is None.”
             // Some(T)—A container that wraps a value of type T.If the Option has an inner value, we say
             // that “the Option is Some.”
-            var firstName = Some("Enrico");            var middleName = None;            Console.WriteLine(GreetingFor(                new Subscriber
+            var firstName = Some("Enrico");
+            var middleName = None;
+            Console.WriteLine(GreetingFor(
+                new Subscriber
                 {
                     Name = "John"
-                }));        }
+                }));
+        }
     }
 }

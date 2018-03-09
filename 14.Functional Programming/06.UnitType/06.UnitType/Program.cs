@@ -23,6 +23,7 @@ namespace _06.UnitType
             // Use void to indicate the absence of data, meaning that your function is only called for side
             // effects and returns no information.
             // Use Unit as an alternative, more flexible representation when there’s a need for
-            // consistency in the handling of Func and Action.        }
+            // consistency in the handling of Func and Action.
+        }
     }
 }
