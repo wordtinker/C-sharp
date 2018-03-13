@@ -74,7 +74,8 @@ namespace _08.CoreFunctions
     // The first overload can be used to get an IEnumerable<T>
     // where Map would give you an IEnumerable<Option<T>>,
     // The second overload can be used to get an IEnumerable<T>
-    // where Map would give you an Option<IEnumerable<T>>.
+    // where Map would give you an Option<IEnumerable<T>>.
+
     public struct Option<T>
     {
         public IEnumerable<T> AsEnumerable()

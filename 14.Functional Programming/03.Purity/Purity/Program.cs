@@ -26,12 +26,15 @@ namespace Purity
             .ToList();
     }
     static class PureListFormatter
-    {        // Pure function        public static List<string> Format(List<string> list)
+    {
+        // Pure function
+        public static List<string> Format(List<string> list)
             =>
             list
             .Select(StringExt.ToSentenceCase)
             .Zip(Range(1, list.Count), (s, i) => $"{i}. {s}")
-            .ToList();    }
+            .ToList();
+    }
 
     class Program
     {
@@ -44,8 +47,12 @@ namespace Purity
             // 1. Isolate I/O operations
             // 2. Avoid mutating arguments
 
-            var shoppingList = new List<string> { "coffee beans", "BANANAS", "Dates" };            new ListFormatter()
+            var shoppingList = new List<string> { "coffee beans", "BANANAS", "Dates" };
+            new ListFormatter()
                 .Format(shoppingList)
-                .ForEach(WriteLine);            PureListFormatter.Format(shoppingList).ForEach(WriteLine);        }
+                .ForEach(WriteLine);
+
+            PureListFormatter.Format(shoppingList).ForEach(WriteLine);
+        }
     }
 }

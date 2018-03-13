@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace _05.Honesty
 {
-    enum Risk { Low, Medium, High }    public class Age
+    enum Risk { Low, Medium, High }
+    public class Age
     {
         private int Value { get; }
 
@@ -24,7 +25,8 @@ namespace _05.Honesty
         // Reduce noise and comparison with integer now checks for validity
         public static bool operator <(Age l, int r) => l < new Age(r);
         public static bool operator >(Age l, int r) => l > new Age(r);
-    }
+    }
+
     class Program
     {
         // Age -> Risk
