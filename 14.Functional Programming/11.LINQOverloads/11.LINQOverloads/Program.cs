@@ -16,7 +16,7 @@ namespace _11.LINQOverloads
             WriteLine("Enter second integer.");
             string s2 = ReadLine();
 
-            // Select and SelectMany, where are overloaded for usage with Option<A>
+            // Select and SelectMany are overloaded for usage with Option<A>
             var result = from a in parseInt(s1)
                          where a > 0
                          let aa = a * a
