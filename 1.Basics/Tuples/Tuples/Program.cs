@@ -23,10 +23,9 @@ namespace Tuples
             var bar = (foo.Prop1, foo.Prop2);
             Console.WriteLine($"{bar.Prop1};{bar.Prop2}");
 
-            var samples = FillTheseValues();
-            Console.WriteLine($"Int is: {samples.a}");
-            Console.WriteLine($"String is: {samples.b}");
-            Console.WriteLine($"Boolean is: {samples.c}");
+            var (a, _, c) = FillTheseValues(); // deconstruction and discard
+            Console.WriteLine($"Int is: {a}");
+            Console.WriteLine($"Boolean is: {c}");
 
         }
     }
