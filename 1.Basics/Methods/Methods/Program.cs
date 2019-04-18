@@ -120,6 +120,7 @@ namespace Methods
             return Fib(x).current;
 
             // local function
+            // can be static in C#8.0
             (int current, int previous) Fib(int i)
             {
                 if (i == 0) return (1, 0);
